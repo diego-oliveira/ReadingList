@@ -2,8 +2,10 @@ require 'test_helper'
 
 class ListingBooksTest < ActionDispatch::IntegrationTest
   setup do
-    Book.create!(title: 'Pragmatic Programmer', rating: 5)
-    Book.create!(title: 'Enders Game', rating: 4)
+    sci_fiction = Genre.create!(name: 'Sci Fiction')
+    programming = Genre.create!(name: 'Programming')
+    genre.books.create!(title: 'Pragmatic Programmer', rating: 5)
+    programming.books.create!(title: 'Enders Game', rating: 4)
   end
   
   test 'listing books' do
