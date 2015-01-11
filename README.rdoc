@@ -1,12 +1,12 @@
-##Reading List API
+==Reading List API
 
 Api for creating a reading list books.
 
-###General Information: 
+===General Information: 
 
 * Written with Rails 4.2.0 and ruby 2.2.0
 
-###Getting Started
+===Getting Started
 
 * Resolve dependencies by running `bundle install`
 * Edit **config/database.yml** with your local database credentials.
