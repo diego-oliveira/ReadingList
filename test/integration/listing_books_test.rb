@@ -2,17 +2,19 @@ require 'test_helper'
 
 class ListingBooksTest < ActionDispatch::IntegrationTest
   setup do
-    sci_fiction = Genre.create!(name: 'Sci Fiction')
-    programming = Genre.create!(name: 'Programming')
-    genre.books.create!(title: 'Pragmatic Programmer', rating: 5)
-    programming.books.create!(title: 'Enders Game', rating: 4)
+    @scifi = Genre.create!(name: 'Sci Fiction')
+    @scifi.books.create!(title: 'Start trek', rating: 5)
+    @scifi.books.create!(title: 'Enders Game', rating: 4)
   end
   
   test 'listing books' do
     get '/books'
     assert_equal 200, response.status
     assert_equal Mime::JSON, response.content_type
-    assert_equal Book.count, json(response.body)[:books].size
+    books = json(response.body)[:books]
+    assert_equal Book.count, books.size
+    book = Book.find(books.first[:id])
+    assert_equal @scifi.id, book.genre.id
   end
   
   test 'should list tip rated books' do
