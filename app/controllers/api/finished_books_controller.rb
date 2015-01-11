@@ -1,4 +1,4 @@
-class FinishedBooksController < ApplicationController
+class Api::FinishedBooksController < ApplicationController
   def index
     books = Book.finished
     respond_to  do |format|
